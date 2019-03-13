@@ -33,14 +33,18 @@ public class CircularLinkedList {
         public void setNext(Node next) {
             this.next = next;
         }
-        public void print(){
-            Node temp=head;
-            do{
-                System.out.println(" " +temp.data);
-                temp=temp.next;
+        public void print() {
+            if (size == 0) {
+                System.out.println("List is Empty");
+            } else {
+                Node temp = head;
+                do {
+                    System.out.println(" " + temp.data);
+                    temp = temp.next;
+                }
+                while (temp != head);
+                System.out.println("");
             }
-            while (temp!=head);
-            System.out.println("");
         }
         //add a new node at the start of the linked list
         public void  addNodeToHead(int data){
@@ -57,7 +61,30 @@ public class CircularLinkedList {
                 head=n;
                 tail.next=head;
             }
+            size++;
         }
-
+        //add a new node at the start of the linked list
+        //if link list is empty,head will go to null
+public void addNodeToTail(int data){
+            if(size==0){
+                addNodeToHead(data);
+}
+else{
+    Node node=new Node(data);
+    tail.next=node;
+    tail=node;
+    tail.next=head;
+    size++;
+        }
     }
+    public void deleteHead(){
+            if(size!=0){
+                Node temp=head;
+                head=head.next;
+                tail.next=head;
+                size--;
+            }
+    }
+
+}
 }
