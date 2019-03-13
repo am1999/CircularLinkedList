@@ -1,5 +1,8 @@
 package Main;
-
+//singly circular linked list of integer node
+//head and  tail are just assumed for traversal.
+//traversal goes from head to tail
+//delete at head and tail
 public class CircularLinkedList {
     int size=0;
     Node head=null;
@@ -30,5 +33,31 @@ public class CircularLinkedList {
         public void setNext(Node next) {
             this.next = next;
         }
+        public void print(){
+            Node temp=head;
+            do{
+                System.out.println(" " +temp.data);
+                temp=temp.next;
+            }
+            while (temp!=head);
+            System.out.println("");
+        }
+        //add a new node at the start of the linked list
+        public void  addNodeToHead(int data){
+            Node n=new Node(data);
+            if(size==0) {
+                head = n;
+                tail = n;
+                n.next = head;
+
+            }
+            else{
+                Node temp=head;
+                n.next=temp;
+                head=n;
+                tail.next=head;
+            }
+        }
+
     }
 }
